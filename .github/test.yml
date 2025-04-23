@@ -1,0 +1,25 @@
+name: Ejecutar prueba unitaria
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Clonar el repositorio
+      uses: actions/checkout@v3
+
+    - name: Configurar Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.12'
+
+    - name: Instalar pytest
+      run: pip install pytest
+
+    - name: Ejecutar prueba unitaria
+      run: pytest test_index.py
